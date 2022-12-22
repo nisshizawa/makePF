@@ -6,11 +6,95 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-right bg-warning">
+        <div class="container">
+          <%= link_to user_homes_top_path do %>
+            <h1>ANImaコミュニティ</h1>
+          <% end %>  
+          <div class="navbar-collapse collspace show" id="navbarNavDropdown" style>
+            <ul class="nav justify-content-around">
+              <% if admin_signed_in? %>
+                <li>
+                  <%= link_to admin_items_path do %>
+                    <button type="button" class="btn btn-outline-info">商品一覧</button>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_users_path do %>
+                    <button type="button" class="btn btn-outline-info">会員一覧</button>
+                  <% end %>
+                </li>
+                <!--<li>-->
+                <!--  <#%= link_to admin_item_item_comments_path do %>-->
+                <!--    <button type="button" class="btn btn-outline-info">商品コメント一覧</button>-->
+                <!--  <#% end %>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <%= link_to admin_genres_path do %>
+                    <button type="button" class="btn btn-outline-info">ジャンル一覧</button>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_admin_session_path, method: :delete do %>
+                    <button type="button" class="btn btn-outline-danger">ログアウト</button>
+                  <% end %>
+                </li>
+          
+              <% elsif user_signed_in? %>
+                <li>
+                  <%= link_to show_path(current_user.id) do %>
+                    <button type="button" class="btn btn-outline-info">マイページ</button>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to items_path do %>
+                    <button type="button" class="btn btn-outline-info">商品一覧</button>
+                  <% end %>  
+                </li>
+                <li>
+                  <%= link_to simulations_path do %>
+                    <button type="button" class="btn btn-outline-info">新規就農シミュレーション</button>
+                  <% end %>  
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <button type="button" class="btn btn-outline-danger">ログアウト</button>
+                  <% end %>  
+                </li>
+                
+              <% else %>
+                <li>
+                  <%= link_to about_path do %>
+                    <button type="button" class="btn btn-outline-info">About</button>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_items_path do %>
+                    <button type="button" class="btn btn-outline-info">商品一覧</button>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path do %>
+                    <button type="button" class="btn btn-outline-secondary">新規登録</button>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path do %>
+                    <button type="button" class="btn btn-outline-success">ログイン</button>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

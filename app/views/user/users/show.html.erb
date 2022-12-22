@@ -1,2 +1,41 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class="h3 m-5 col-3 bg-info text-black text-center">
+    マイページ
+</div>
+
+<div class="container">
+    
+    <div class="my-3 row justify-content-start">
+        <div class="col-2 h4">登録情報</div>
+        <div class="col-4">   
+            <%= link_to edit_path(current_user) do %>
+                <div class="btn btn-sm btn-success rounded-pill">編集する</div>
+            <% end %>
+        </div>     
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-3 border border-dark bg-light">氏名</div>
+        <div class="col-6 border border-dark"><%= current_user.last_name %><%= current_user.first_name %></div>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-3 border border-dark bg-light">カナ</div>
+        <div class="col-6 border border-dark"><%= current_user.last_name_kana %><%= current_user.first_name_kana %></div>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-3 border border-dark bg-light">郵便番号</div>
+        <div class="col-6 border border-dark"><%= current_user.postal_code %></div>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-3 border border-dark bg-light">住所</div>
+        <div class="col-6 border border-dark"><%= current_user.address %></div>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-3 border border-dark bg-light">電話番号</div>
+        <div class="col-6 border border-dark"><%= current_user.telephone_number %></div>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-3 border border-dark bg-light">メールアドレス</div>
+        <div class="col-6 border border-dark"><%= current_user.email %></div>
+    </div>
+    
+
+</div>
