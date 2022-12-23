@@ -36,6 +36,9 @@
         <div class="col-3 border border-dark bg-light">メールアドレス</div>
         <div class="col-6 border border-dark"><%= current_user.email %></div>
     </div>
+    <div class="row justify-content-start">
+        <%= link_to "#{item.item_comments.count} コメント", item_path(item_id) %>
+    </div>
     
 
 </div>
