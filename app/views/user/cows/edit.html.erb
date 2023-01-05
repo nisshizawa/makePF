@@ -1,0 +1,46 @@
+<div class="py-4">
+    <section id="infomation">
+        <div class="container">
+            <h3 class="md-3">牛の新規登録</h3>
+            <%= form_with model: @cow, url: cow_path, method: :patch do |f| %> 
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>動物画像</h4>
+                    <%= f.file_field :image, accept: "image/*" %>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>品種名</th>
+                                <th>個体名</th>
+                                <th>個体番号</th>
+                                <th>入荷・生誕日</th>
+                                <th>種付け予定日</th>
+                                <th>分娩日</th>
+                                <th>ワクチン接種</th>
+                                <th>自由記述欄</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><%= f.text_field :animal_name %></td>
+                                <td><%= f.text_field :name %></td>
+                                <td><%= f.text_field :number %></td>
+                                <td><%= f.text_field :arrival %></td>
+                                <td><%= f.text_field :mating %></td>
+                                <td><%= f.text_field :estimated %></td>
+                                <td><%= f.text_field :vaccine %></td>
+                                <td><%= f.text_area :comment %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <div class="text-center">   
+                <button type="submit" class="btn btn-info">変更内容を保存する</button>
+            </div>                     
+            </div>
+            <% end %>
+        </div>        
+    </section>
+</div>

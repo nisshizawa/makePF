@@ -12,7 +12,7 @@ class User::ItemsController < ApplicationController
         else
             all_items = Item.all
         end
-        @items = all_items.page(params[:page])
+        @items = all_items
     end
     
     def show
@@ -20,6 +20,8 @@ class User::ItemsController < ApplicationController
         @item_comment = ItemComment.new
     end
     
+
+        
     private
     def item_params
         params.require(:item).permit(:image, :name, :introduction, :price, :is_active, :genre_id)

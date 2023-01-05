@@ -5,12 +5,7 @@ class Item < ApplicationRecord
   has_many :item_comments, dependent: :destroy
   has_one_attached :image
 
-  validates :name, presence: true
-  validates :introduction, presence: true
-  validates :price, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
-  validate :image_type
-  
-  scope :where_genre_active, -> { joins(:genre).where(genres: { is_active: true }) }
+
   
   def get_image(*size)
     unless image.attached?

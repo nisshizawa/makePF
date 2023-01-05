@@ -3,7 +3,7 @@
 class User::SessionsController < Devise::SessionsController
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :configure_sign_in_params, only: [:create]
-  before_action :customer_status, only: [:create]
+  before_action :user_status, only: [:create]
   
   def after_sign_in_path_for(resource)
     user_homes_top_path
@@ -43,7 +43,7 @@ class User::SessionsController < Devise::SessionsController
   def user_status
     @user = User.find_by(email: params[:user][:email])
     return if !@user
-     if @user.valid_password?(params[:customer][:password]) && !@user.is_active 
+     if @user.valid_password?(params[:user][:password]) && !@user.is_active 
        redirect_to new_customer_registration_path
      end  
   end  

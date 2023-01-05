@@ -63,6 +63,11 @@
                   <% end %>  
                 </li>
                 <li>
+                  <%= link_to mypage_path(current_user) do %>
+                    <button type="button" class="btn btn-outline-info">管理表</button>
+                  <% end %>  
+                </li>                
+                <li>
                   <%= link_to destroy_user_session_path, method: :delete do %>
                     <button type="button" class="btn btn-outline-danger">ログアウト</button>
                   <% end %>  
@@ -75,7 +80,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_items_path do %>
+                  <%= link_to items_path do %>
                     <button type="button" class="btn btn-outline-info">商品一覧</button>
                   <% end %>
                 </li>

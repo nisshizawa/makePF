@@ -1,1 +1,19 @@
 <h1>ようこそANImaコミュニティへ！！</h1>
+
+<% @items.each do |item| %>
+  <%= item.id %>
+  <%= item.name %>
+<% end %>
+
+<%= form_with url: user_homes_top_path, method: :get do |form| %>
+  <% @genres.each do |genre| %>
+    <%= form.check_box :genre_id, { multiple: true }, genre.id, nil %>
+    <%= genre.id %>
+    <%= genre.name %>
+  <% end %>
+  
+
+  <%= form.submit "実行" %>
+<% end %>
+
+

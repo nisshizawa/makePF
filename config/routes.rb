@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
     namespace :user do
       get 'homes/top'
       get 'homes/about'
@@ -30,12 +31,17 @@ Rails.application.routes.draw do
     scope module: :user do
       root to: 'homes#top'
       get 'home/about' => 'home#about', as: 'about'
+      resources :cows
+      resources :pigs
+      resources :hens
       resources :items, only: [:index, :show] do
         resources :item_comments, only: [:create, :index, :destroy]
       end  
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-      resources :managements, only: [:new, :index, :edit, :create, :update, :show]
+      get 'managements/check' => 'managements#check', as: 'check'
+      resources :managements, only: [:new, :index, :edit, :create, :update, :show, :destroy]
       resources :reviews, only: [:new, :index, :edit, :create, :update, :show, :destroy]
+      get 'users/mypage' => 'users#mypage', as: 'mypage'
       get 'users/show' => 'users#show', as: 'show' 
       get 'users/edit' => 'users#edit', as: 'edit'
       get 'users/confirm' => 'users#confirm', as: 'confirm'

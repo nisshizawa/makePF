@@ -1,0 +1,113 @@
+<div class="h3 m-5 col-3 bg-info text-black text-center">
+  管理情報一覧画面
+</div>
+
+<div class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">   
+                <%= link_to cows_path(current_user) do %>
+                    <div class="btn btn-sm btn-secondary rounded-pill">登録した牛一覧</div>
+                <% end %>
+                <%= link_to new_cow_path(current_user) do %>
+                    <div class="btn btn-sm btn-info rounded-pill">牛の新規登録</div>
+                <% end %>                
+            </div>                         
+            <div class="col-md-4">   
+                <%= link_to pigs_path(current_user) do %>
+                    <div class="btn btn-sm btn-secondary rounded-pill">登録した豚一覧</div>
+                <% end %>
+                <%= link_to new_pig_path(current_user) do %>
+                    <div class="btn btn-sm btn-info rounded-pill">豚の新規登録</div>
+                <% end %>                
+            </div>                         
+            <div class="col-md-4">   
+                <%= link_to hens_path(current_user) do %>
+                    <div class="btn btn-sm btn-secondary rounded-pill">登録した鶏一覧</div>
+                <% end %>
+                <%= link_to new_hen_path(current_user) do %>
+                    <div class="btn btn-sm btn-info rounded-pill">鶏の新規登録</div>
+                <% end %>                
+            </div>                                     
+        </div>
+    </div>
+    <section id="menu">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a href="#content1" class="nav-link active" data-toggle="tab">乳用牛・肥育牛</a></li>
+                <li class="nav-item"><a href="#content2" class="nav-link" data-toggle="tab">鶏卵・肉用鶏</a></li>
+                <li class="nav-item"><a href="#content2" class="nav-link" data-toggle="tab">豚</a></li>
+            </ul>
+
+            
+            <div class="tab-content">
+                <div id="content1" class="tab-pane active">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>個体名</th>
+                                <th>個体番号</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @cows.each do |cow| %>
+                            <tr>
+                                <td>
+                                    <%= link_to cow_path(cow.id) do %>
+                                        <%= cow.name %>
+                                    <% end %>                                        
+                                </td>
+                                <td><%= cow.number %></td>
+                            </tr>
+                        <% end %>    
+                        </tbody>
+                    </table>
+                </div>
+                <div id="content2" class="tab-pane">
+                     <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>品種名</th>
+                                <th>羽数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @hens.each do |hen| %>
+                            <tr>
+                                <td>
+                                    <%= link_to cow_path(cow.id) do %>
+                                        <%= hen.animal_name %>
+                                    <% end %>                                              
+                                </td>
+                                <td><%= hen.amount %></td>
+                            </tr>
+                        <% end %>    
+                        </tbody>
+                    </table>
+                </div>
+                <div id="content2" class="tab-pane">
+                     <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>個体名</th>
+                                <th>品種名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @pigs.each do |pig| %>
+                            <tr>
+                                <td>
+                                    <%= link_to pig_path(pig.id) do %>
+                                        <%= pig.name %>
+                                    <% end %>                                              
+                                </td>
+                                <td><%= pig.animal_name %></td>
+                            </tr>
+                        <% end %>    
+                        </tbody>
+                    </table>
+                </div>                
+            </div>
+            
+        </div>
+    </section>
+</div>

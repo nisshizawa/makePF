@@ -16,7 +16,7 @@
                 <p class="card-text">
                     <%= f.hidden_field :item_id, :value => @item.id %>
                     <%= f.select :amount, *[1..10] %>
-                    <%= f.submit "カートに入れる", class: "btn btn-success" %>
+                    <%= f.submit "シミュレーションに加える", class: "btn btn-success" %>
                 </p>
            <% end %>
             </div>
@@ -25,21 +25,30 @@
 </div>
 <div class="container">
     <div class="row">
+          <div class="col-md-8 position-static">
+            <div id="">
+
+            </div>
+          </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
         <table class="table table-hover table-inverse">
             <thead>
                 <tr>
+                    <th>ユーザー名</th>
+                    <th>コメント</th>
                     <th>コメント件数</th>
                     <th><%= @item.item_comments.count %></th>
-                    <th colspan="1"></th>
-                    <th colspan="1"></th>
                 </tr>
             </thead>
             <tbody>
                 <% @item.item_comments.each do |item_comment| %>
                 <tr>
-                    <td><%= item_comment.user.name %></td>
-                    <td><%= item_comment.created_at.strftime('%Y/%m/%d') %></td>
+                    <td><%= item_comment.user.first_name %><%= item_comment.user.last_name %></td>
                     <td><%= item_comment.comment %></td>
+                    <td><%= item_comment.created_at.strftime('%Y/%m/%d') %></td>
                     <td>
                         <% if item_comment.user == current_user %>
                             <%= link_to "削除", item_item_comment_path(item_comment.item, item_comment), method: :delete %>
@@ -49,11 +58,30 @@
                 <% end %>
             </tbody>
         </table>
-        <div>
+        <div>  
+
+        
+            
+           avarage:   <%= (@item.item_comments.sum {|comment| comment.rate } / @item.item_comments.count).round(1)  %>
+            
+            
             <%= form_with model: [@item, @item_comment] do |f| %>
+                 <div id="post_raty">
+                   <label>評価：</label>
+             
+                </div>
                 <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
                 <%= f.submit "送信する" %>
             <% end %>
+                  <script>
+                var elem = document.getElementById('post_raty');
+                var opt = {  
+                    starOn: "<%= asset_path('star.jpg') %>",
+                    starOff: "<%= asset_path('star_off.jpg') %>",
+                    starHalf: "<%= asset_path('star_harf.jpg') %>",
+                  };
+                  raty(elem,opt);
+                </script>
         </div>
     </div>
 </div>

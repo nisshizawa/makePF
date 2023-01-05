@@ -1,0 +1,69 @@
+<div class="h3 m-5 col-3 bg-info text-black text-center">
+  管理情報入力画面
+</div>
+
+<div class="py-4">
+    <section id="menu">
+cc>
+            <h3 class="md-3"> 入力項目一覧</h3>
+            <p>こちらでは、動物の情報を纏められるようになっています。</p>
+            <div class="nav nav-tabs" id="tab-menus" role="tablist">  <!--タブ型ナビゲーション-->
+                <a class="nav-item nav-link active" id="tab-menu01" data-bs-toggle="tab" href="#panel-menu01" 
+                role="tab" aria-controls="panel-menu01" aria-selected="true">  <!--タブ01-->
+                    乳用牛・肥育牛
+                </a>
+                
+                <a class="nav-item nav-link active" id="tab-menu02" data-bs-toggle="tab" href="#panel-menu02" 
+                role="tab" aria-controls="panel-menu02" aria-selected="true">  <!--タブ02-->
+                    鶏卵・肉用鶏
+                </a>
+            </div>
+        <%= form_with model: @management, url: check_path do |f| %>    
+            <div class="tab-content" id="panel-menus">  <!--タブパネル-->
+                <div class="tab-pane fade show active border border-top-0" id="panel-menu01" 
+                role="tabpanel" aria-labelledby="tab-menu01">  <!--パネル1-->
+                    <h4>動物画像</h4>
+                    <%= f.file_field :image, accept: "image/*" %>
+                    <h3>品種名<h3>
+                        <%= f.text_field :animal_name %>
+                    <h3>個体名</h3>
+                        <%= f.text_field :name %>
+                    <h3>個体番号</h3>
+                        <%= f.text_field :number %>
+                    <h3>入荷・生誕日</h3>
+                        <%= f.text_field :arrival %>
+                    <h3>種付け予定日</h3>
+                        <%= f.text_field :mating %>
+                    <h3>分娩日</h3>
+                        <%= f.text_field :estimated %>
+                    <h3>ワクチン接種</h3>
+                        <%= f.text_field :vaccine %>
+                    <h3>自由記述欄</h3>
+                        <%= f.text_area :comment %>
+                </div>
+                
+                <div class="tab-pane fade show active border border-top-0" id="panel-menu02" 
+                role="tabpanel" aria-labelledby="tab-menu02">  <!--パネル2-->
+                    <h4>動物画像</h4>
+                    <%= f.file_field :image, accept: "image/*" %>
+                    <h3>品種名<h3>
+                        <%= f.text_field :animal_name %>
+                    <h3>個体名</h3>
+                        <%= f.text_field :name %>
+                    <h3>導入羽数</h3>
+                        <%= f.text_field :amount %>
+                    <h3>入荷・生誕日</h3>
+                        <%= f.text_field :arrival %>
+                    <h3>ワクチン接種</h3>
+                        <%= f.text_field :vaccine %>
+                    <h3>自由記述欄</h3>
+                        <%= f.text_area :comment %>                    
+                </div>                
+            </div>
+            <div class="text-center">   
+                <button type="submit" class="btn btn-info">確認画面へ進む</button>
+            </div>                
+        <% end %>    
+        </div>
+    </section>
+</div>

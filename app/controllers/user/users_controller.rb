@@ -6,6 +6,13 @@ class User::UsersController < ApplicationController
   def show
     @user = current_user
   end
+  
+  def mypage
+    @user = current_user
+    @cows = current_user.cows.all
+    @hens = current_user.hens.all
+    @pigs = current_user.pigs.all
+  end
 
   def edit
     @user = current_user

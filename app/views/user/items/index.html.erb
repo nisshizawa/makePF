@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <h4 class="card-title"><%= link_to item.name, item_path(item.id) %></h4>    
                             <h6 class="card-text">￥<%= item.with_tax_price.to_s(:delimited) %></h6>
-                            <h5 class="card-text"><%= link_to "#{item.item_comments.count} コメント", item_path(item_id) %></h5>
+                            <h5 class="card-text">コメント数<%= item.item_comments.count %></h5>
                         </div>
                     </div>
                     <% end %>
@@ -32,6 +32,6 @@
     
         </div>
     </div>    
-    <%= paginate @items %>
+    <%#= paginate @items %>
     
 </div>

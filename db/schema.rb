@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_20_094942) do
+ActiveRecord::Schema.define(version: 2023_01_05_013723) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,9 +66,36 @@ ActiveRecord::Schema.define(version: 2022_12_20_094942) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cows", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name", null: false
+    t.string "animal_name", null: false
+    t.string "vaccine", null: false
+    t.string "arrival", null: false
+    t.string "estimated", null: false
+    t.string "mating", null: false
+    t.string "number", null: false
+    t.text "comment"
+    t.boolean "is_active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "is_active", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hens", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "animal_name", null: false
+    t.text "comment"
+    t.string "amount", null: false
+    t.string "vaccine", null: false
+    t.string "arrival", null: false
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,6 +121,32 @@ ActiveRecord::Schema.define(version: 2022_12_20_094942) do
   end
 
   create_table "managements", force: :cascade do |t|
+    t.string "name"
+    t.string "animal_name"
+    t.text "comment"
+    t.integer "price"
+    t.string "amount"
+    t.string "vaccine"
+    t.string "arrival"
+    t.string "estimated"
+    t.string "mating"
+    t.string "number"
+    t.boolean "is_active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pigs", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name", null: false
+    t.string "animal_name", null: false
+    t.text "comment"
+    t.string "vaccine", null: false
+    t.string "arrival", null: false
+    t.string "estimated", null: false
+    t.string "mating", null: false
+    t.string "number", null: false
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,12 +1,13 @@
-class Management < ApplicationRecord
+class Hen < ApplicationRecord
   has_one_attached :image
+  belongs_to :user  
 
 
   
   def get_image(*size)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no-image.png')
-      image.attach(io: File.open(file_path), filename: 'no-image.png', content_type: 'image/png')
+      file_path = Rails.root.join('app/assets/images/no.image.gpg')
+      image.attach(io: File.open(file_path), filename: 'no.image.jpg', content_type: 'image/jpg')
     end
     
     if !size.empty?
@@ -25,5 +26,5 @@ class Management < ApplicationRecord
       errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
     end
   end  
-    
+        
 end

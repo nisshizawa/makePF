@@ -3,8 +3,12 @@ class User::ItemCommentsController < ApplicationController
         item = Item.find(params[:item_id])
         comment = current_user.item_comments.new(item_comment_params)
         comment.item_id = item.id
-        comment.save
+       if  comment.save
         redirect_to item_path(item)
+       else
+      redirect_to item_path(item), alert: "hogehoge error"
+       end
+        
     end
     
     def destroy
@@ -16,6 +20,7 @@ class User::ItemCommentsController < ApplicationController
     private
     
     def item_comment_params
-        params.require(:item_comment).permit(:comment)
+
+        params.require(:item_comment).permit(:comment).merge({rate: params[:score]})
     end
 end

@@ -1,11 +1,10 @@
-class CreateManagements < ActiveRecord::Migration[6.1]
+class CreatePigs < ActiveRecord::Migration[6.1]
   def change
-    create_table :managements do |t|
+    create_table :pigs do |t|
+      t.integer :user_id         
       t.string :name, null: false         #個体名
       t.string :animal_name, null: false  #品種名
       t.text :comment
-      t.integer :price, null: false
-      t.string :amount, null: false
       t.string :vaccine, null: false      #ワクチン接種
       t.string :arrival, null: false      #入荷
       t.string :estimated, null: false    #分娩

@@ -10,7 +10,12 @@
             <%= link_to edit_path(current_user) do %>
                 <div class="btn btn-sm btn-success rounded-pill">編集する</div>
             <% end %>
-        </div>     
+        </div> 
+        <div class="col-4">   
+            <%= link_to mypage_path(current_user) do %>
+                <div class="btn btn-sm btn-secondary rounded-pill">登録した家畜一覧</div>
+            <% end %>
+        </div>             
     </div>
     <div class="row justify-content-start">
         <div class="col-3 border border-dark bg-light">氏名</div>
@@ -36,9 +41,12 @@
         <div class="col-3 border border-dark bg-light">メールアドレス</div>
         <div class="col-6 border border-dark"><%= current_user.email %></div>
     </div>
-    <div class="row justify-content-start">
-        <%= link_to "#{item.item_comments.count} コメント", item_path(item_id) %>
-    </div>
-    
+    <% Item.all.each do |item| %>
+        <div class="row justify-content-start">
+        <% if item.item_comments.where(user_id: current_user.id).count > 0 %>    
+            <%= link_to "#{item.item_comments.where(user_id: current_user.id).count} コメント", item_path(item.id) %>
+        <% end %>    
+        </div>
+    <% end %>
 
 </div>

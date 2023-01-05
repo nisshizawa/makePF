@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :simulations, dependent: :destroy
   has_many :item_comments, dependent: :destroy
+  has_many :hens, dependent: :destroy
+  has_many :cows, dependent: :destroy
+  has_many :pigs, dependent: :destroy
 
   scope :only_active, -> { where(is_active: true) }
 
