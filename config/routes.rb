@@ -23,11 +23,12 @@ Rails.application.routes.draw do
     end
     
   
-  devise_for :users,skip: [:passwords], controllers: {
-    registrations: "user/registrations",
-    sessions: 'user/sessions'
-  }
-  
+    devise_for :users,skip: [:passwords], controllers: {
+      registrations: "user/registrations",
+      sessions: 'user/sessions'
+    }
+    
+
     scope module: :user do
       root to: 'homes#top'
       get 'home/about' => 'home#about', as: 'about'
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
       delete 'simulations/destroy_all' => 'simulations#destroy_all', as: 'destroy_all'
       resources :simulations, only: [:index, :update, :destroy, :create]
     end  
+
   
   
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

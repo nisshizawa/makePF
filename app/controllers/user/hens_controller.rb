@@ -45,6 +45,6 @@ class User::HensController < ApplicationController
   
   private
   def hen_params
-    params.require(:hen).permit(:user_id, :animal_name, :comment, :vaccine, :arrival, :amount, :is_active)
+    params.require(:hen).permit(:user_id, :animal_name, :comment, :vaccine, :arrival, :amount, :is_active, :image)
   end
 end

@@ -1,13 +1,14 @@
 <div class="py-4">
     <section id="infomation">
         <div class="container">
-            <h3 class="md-3">牛の新規登録</h3>
-            <%= form_with model: @cow, url: cows_path do |f| %> 
+            <h3 class="md-3">豚の内容編集</h3>
+            <%= form_with model: @pig, url: pig_path, method: :patch do |f| %> 
             <div class="row">
                 <div class="col-md-6">
                     <h4>動物画像</h4>
                     <%= f.file_field :image, accept: "image/*" %>
                 </div>
+                <div class="col-md-6">
                 <div class="col-md-6">
                     <div class="row justify-content-start">
                         <div class="col-3 border borderless bg-light">品種名</div>
@@ -42,8 +43,9 @@
                         <div class="col-6 border-start border-dark"><%= f.text_area :comment %></div>
                     </div>                                       
                 </div>
+                </div>
             <div class="text-center">   
-                <button type="submit" class="btn btn-info">登録する</button>
+                <button type="submit" class="btn btn-info">変更内容を保存する</button>
             </div>                     
             </div>
             <% end %>

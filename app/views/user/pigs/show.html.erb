@@ -1,2 +1,62 @@
-<h1>User::Pigs#show</h1>
-<p>Find me in app/views/user/pigs/show.html.erb</p>
+<div class="py-4">
+    <section id="infomation">
+        <div class="container">
+            <h3 class="md-3">豚の登録情報</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>動物画像</h4>
+                    <%= image_tag @pig.get_image %>
+                </div>
+                <div class="col-md-6">
+                <div class="col-md-6">
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">品種名</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.animal_name %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">個体名</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.name %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">個体番号</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.number %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">入荷・生誕日</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.arrival %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">種付け予定日</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.mating %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">分娩日</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.estimated %></div>
+                    </div>                    
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">ワクチン接種</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.vaccine %></div>
+                    </div>                   
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">自由記述欄</div>
+                        <div class="col-6 border-start border-dark"><%= @pig.comment %></div>
+                    </div>                                       
+                </div>
+                </div>
+            <div class="text-center">  
+                <% if @pig.user == current_user %>
+                    <%= link_to edit_pig_path(@pig) do %>
+                        <div class="btn btn-sm btn-success">編集する</div>
+                    <% end %>    
+                <% end %>
+                <% if @pig.user == current_user %>
+                    <%= link_to cow_path(@pig), method: :delete do %>
+                        <div data-confirm="本当に消しますか？" class="btn btn-sm btn-danger">削除する</div>
+                    <% end %>
+                <% end %>                    
+            </div>                     
+            </div>
+        </div>        
+    </section>
+</div>
+

@@ -3,51 +3,61 @@
         <div class="container">
             <h3 class="md-3">牛の登録情報</h3>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <h4>動物画像</h4>
                     <%= image_tag @cow.get_image %>
                 </div>
-                <div class="col-md-6">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>品種名</th>
-                                <th>個体名</th>
-                                <th>個体番号</th>
-                                <th>入荷・生誕日</th>
-                                <th>種付け予定日</th>
-                                <th>分娩日</th>
-                                <th>ワクチン接種</th>
-                                <th>自由記述欄</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><%= @cow.animal_name %></td>
-                                <td><%= @cow.name %></td>
-                                <td><%= @cow.number %></td>
-                                <td><%= @cow.arrival %></td>
-                                <td><%= @cow.mating %></td>
-                                <td><%= @cow.estimated %></td>
-                                <td><%= @cow.vaccine %></td>
-                                <td><%= @cow.comment %></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-md-8">
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">品種名</div>
+                        <div class="col-6 border border-dark"><%= @cow.animal_name %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">個体名</div>
+                        <div class="col-6 border border-dark"><%= @cow.name %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">個体番号</div>
+                        <div class="col-6 border border-dark"><%= @cow.number %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">入荷・生誕日</div>
+                        <div class="col-6 border border-dark"><%= @cow.arrival %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">種付け予定日</div>
+                        <div class="col-6 border border-dark"><%= @cow.mating %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">分娩日</div>
+                        <div class="col-6 border border-dark"><%= @cow.estimated %></div>
+                    </div>                    
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">ワクチン接種</div>
+                        <div class="col-6 border border-dark"><%= @cow.vaccine %></div>
+                    </div>                   
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">自由記述欄</div>
+                        <div class="col-6 border border-dark"><%= @cow.comment %></div>
+                    </div>                           
+
                 </div>
-            <div class="text-center">  
-                <% if @cow.user == current_user %>
-                    <%= link_to edit_cow_path(@cow) do %>
-                        <div class="btn btn-sm btn-success">編集する</div>
-                    <% end %>    
-                <% end %>
-                <% if @cow.user == current_user %>
-                    <%= link_to cow_path(@cow), method: :delete do %>
-                        <div data-confirm="本当に消しますか？" class="btn btn-sm btn-danger">削除する</div>
-                    <% end %>
-                <% end %>                    
-            </div>                     
+
             </div>
+                <div class="text-center"> 
+                    <div class="col-md-3">          
+                        <% if @cow.user == current_user %>
+                            <%= link_to edit_cow_path(@cow) do %>
+                                <div class="btn btn-sm btn-success">編集する</div>
+                            <% end %>    
+                        <% end %>
+                        <% if @cow.user == current_user %>
+                            <%= link_to cow_path(@cow), method: :delete do %>
+                                <div data-confirm="本当に消しますか？" class="btn btn-sm btn-danger">削除する</div>
+                            <% end %>
+                        <% end %>   
+                    </div>      
+                </div>                                 
         </div>        
     </section>
 </div>

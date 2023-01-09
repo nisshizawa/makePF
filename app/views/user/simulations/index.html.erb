@@ -1,10 +1,10 @@
 <div class="container">
     <div class="row">
-        <div class="h3 m-5 col-3 bg-info text-black text-center">
-            ショッピングカート
+        <div class="h3 col-md-4 bg-info text-black text-center">
+            新規就農シュミレーション
         </div>
         <div class="m-5 col-md-5 offset-md-2">
-            <%= button_to "カートを空にする",  destroy_all_path, method: :delete %>
+            <%= button_to "全てリセット",  destroy_all_path, method: :delete %>
         </div>
     </div>
     <table class="table table-bordered">
@@ -42,8 +42,8 @@
     </table>
     <div class="row mt-5">
                 <div class="text-start">
-                    <%= link_to _path do %>
-                        <div class="btn btn-sm btn-info">買い物を続ける</div>
+                    <%= link_to items_path do %>
+                        <div class="btn btn-sm btn-info">アイテムを追加する</div>
                     <% end %>
                 </div>
                 <div class="text-end">

@@ -1,2 +1,51 @@
-<h1>User::Hens#show</h1>
-<p>Find me in app/views/user/hens/show.html.erb</p>
+<div class="py-4">
+    <section id="infomation">
+        <div class="container">
+            <h3 class="md-3">鶏の登録情報</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>動物画像</h4>
+                    <%= image_tag @hen.get_image %>
+                </div>
+                <div class="col-md-8">
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">品種名</div>
+                        <div class="col-6 border border-dark"><%= @hen.animal_name %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">個体数</div>
+                        <div class="col-6 border border-dark"><%= @hen.amount %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">入荷・生誕日</div>
+                        <div class="col-6 border border-dark"><%= @hen.arrival %></div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">ワクチン接種</div>
+                        <div class="col-6 border border-dark"><%= @hen.vaccine %></div>
+                    </div>                   
+                    <div class="row justify-content-start">
+                        <div class="col-3 border borderless bg-light">自由記述欄</div>
+                        <div class="col-6 border border-dark"><%= @hen.comment %></div>
+                    </div>                           
+
+                </div>
+
+            </div>
+                <div class="text-center"> 
+                    <div class="col-md-3">          
+                        <% if @hen.user == current_user %>
+                            <%= link_to edit_hen_path(@hen) do %>
+                                <div class="btn btn-sm btn-success">編集する</div>
+                            <% end %>    
+                        <% end %>
+                        <% if @hen.user == current_user %>
+                            <%= link_to hen_path(@hen), method: :delete do %>
+                                <div data-confirm="本当に消しますか？" class="btn btn-sm btn-danger">削除する</div>
+                            <% end %>
+                        <% end %>   
+                    </div>      
+                </div>                                 
+        </div>        
+    </section>
+</div>

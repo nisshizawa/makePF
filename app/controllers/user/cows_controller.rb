@@ -40,11 +40,11 @@ class User::CowsController < ApplicationController
   def destroy
     @cow = Cow.find(params[:id])
     @cow.destroy
-    redirect_to cow_path    
+    redirect_to cows_path    
   end
   
   private
   def cow_params
-    params.require(:cow).permit(:user_id, :name, :animal_name, :comment, :vaccine, :arrival, :estimated, :mating, :number, :is_active)
+    params.require(:cow).permit(:user_id, :image, :name, :animal_name, :comment, :vaccine, :arrival, :estimated, :mating, :number, :is_active)
   end
 end
