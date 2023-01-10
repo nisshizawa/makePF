@@ -1,4 +1,6 @@
 class User::SimulationsController < ApplicationController
+     before_action :guest_check
+     
     def index
         @simulations = current_user.simulations.all
         @all_price = @simulations.inject(0) { |sum, item| sum + item.sum_of_price }

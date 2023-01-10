@@ -1,4 +1,6 @@
 class User::HensController < ApplicationController
+   before_action :guest_check
+   
   def new
     @hen = Hen.new    
   end

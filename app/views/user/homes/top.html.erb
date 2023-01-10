@@ -1,19 +1,25 @@
-<h1>ようこそANImaコミュニティへ！！</h1>
-
-<% @items.each do |item| %>
-  <%= item.id %>
-  <%= item.name %>
-<% end %>
-
-<%= form_with url: user_homes_top_path, method: :get do |form| %>
-  <% @genres.each do |genre| %>
-    <%= form.check_box :genre_id, { multiple: true }, genre.id, nil %>
-    <%= genre.id %>
-    <%= genre.name %>
-  <% end %>
-  
-
-  <%= form.submit "実行" %>
-<% end %>
-
+<div class="py-4">
+    <section id="infomation">
+        <div class="container">
+            <h1 class="md-6">ようこそANImaコミュニティへ！！</h1>
+            <div class="row">
+              <div class="col-md-6">
+                ゲストログインの方はこちらへ
+                      <div class="row">
+                  <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "btn btn-info btn-sm btn-block mb-3 log_in" %>
+                </div>
+              </div>
+              <div class="col-md-6">
+                本格的に使用の方は会員登録へ
+                <div class="row">
+                  <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+                </div>   
+                <div class="row">
+                  <%= link_to "ログインへ", new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+                </div>
+              </div>
+            </div>
+        </div>    
+    </section>          
+</div>
 

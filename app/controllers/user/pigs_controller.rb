@@ -1,4 +1,6 @@
 class User::PigsController < ApplicationController
+   before_action :guest_check
+   
   def new
     @pig = Pig.new    
   end

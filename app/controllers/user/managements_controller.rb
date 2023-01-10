@@ -1,4 +1,6 @@
 class User::ManagementsController < ApplicationController
+   before_action :guest_check
+   
   def new
     @management = Management.new
   end

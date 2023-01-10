@@ -31,5 +31,15 @@ class User < ApplicationRecord
   
   def has_in_cart(item)
     cart_items.find_by(item_id: item.id)
-  end         
-end
+  end   
+  
+  def self.guest
+    user = find_by(email: 'guest@example.com') 
+    if user.nil?
+      user = create!(password: SecureRandom.urlsafe_base64, last_name: 'gest', first_name: 'gest', first_name_kana: 'gest', last_name_kana: 'gest', postal_code: '0000000', address: '仮番地', telephone_number: '11111111111', email:'guest@example.com' )
+    end
+    return user
+  end   
+  
+end  
+
