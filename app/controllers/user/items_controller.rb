@@ -13,6 +13,14 @@ class User::ItemsController < ApplicationController
             all_items = Item.all
         end
         @items = all_items
+        @genres = Genre.all
+        
+        if params[:genre_id].present?
+          @items = Item.where(genre_id: params[:genre_id])
+        else
+          @items = Item.all
+        end
+        
     end
     
     def show
