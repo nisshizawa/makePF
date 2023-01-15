@@ -5,7 +5,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <h4>商品の画像</h4>
-                    <%= image_tag @item.get_image %>
+                        <div class="card-list-container py-5">
+                            <div class="w-200 mx-2 mt-4 shadow-lg">
+                                <%= image_tag @item.get_image, class:"card-img-top"; %>
+                            </div>   
+                        </div>    
                 </div>
                 <div class="col-md-8">
                     <div class="row justify-content-start">

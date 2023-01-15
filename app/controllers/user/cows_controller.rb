@@ -1,6 +1,12 @@
 class User::CowsController < ApplicationController
    before_action :guest_check
    
+  def guest_check
+      if current_user == User.find(5)
+        redirect_to user_homes_top_path,notice: "このページを見るには会員登録が必要です。"
+      end
+  end        
+   
   def new
     @cow = Cow.new    
   end

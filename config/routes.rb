@@ -34,7 +34,8 @@ Rails.application.routes.draw do
          post 'users/guest_sign_in', to: 'sessions#new_guest'
       end  
       root to: 'homes#top'
-      get 'home/about' => 'home#about', as: 'about'
+      get 'homes/search' => 'homes#search', as: 'search'
+      get 'homes/about' => 'homes#about', as: 'about'
       resources :cows
       resources :pigs
       resources :hens

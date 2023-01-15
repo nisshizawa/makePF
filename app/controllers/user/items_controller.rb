@@ -1,9 +1,5 @@
 class User::ItemsController < ApplicationController
-    def top
-        @items = Item.order('id DESC').limit(4)
-   
-        
-    end    
+
     def index
         @genres = Genre.all
         if params[:genre_id]
@@ -13,14 +9,6 @@ class User::ItemsController < ApplicationController
             all_items = Item.all
         end
         @items = all_items
-        @genres = Genre.all
-        
-        if params[:genre_id].present?
-          @items = Item.where(genre_id: params[:genre_id])
-        else
-          @items = Item.all
-        end
-        
     end
     
     def show
