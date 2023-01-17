@@ -15,7 +15,7 @@ class User::HensController < ApplicationController
     @hen = Hen.new(hen_params)
     @hen.user_id = current_user.id
     if @hen.save
-      flash[:notice] ='You have created hen successfully.'
+      flash[:notice] ='鶏の情報を登録しました！'
       redirect_to hen_path(@hen.id)
     else
       @hens = Hen.all
@@ -38,7 +38,7 @@ class User::HensController < ApplicationController
   def update
     @hen = Hen.find(params[:id])
     if @hen.update(hen_params)
-      flash[:notice] ='You have update hen successfully.'
+      flash[:notice] ='鶏の情報を更新しました！'
       redirect_to hen_path(@hen.id)
     else
       render :edit
@@ -48,7 +48,7 @@ class User::HensController < ApplicationController
   def destroy
     @hen = Hen.find(params[:id])
     @hen.destroy
-    redirect_to hen_path    
+    redirect_to hens_path    
   end
   
   private

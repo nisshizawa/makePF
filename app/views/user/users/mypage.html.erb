@@ -1,10 +1,9 @@
-<div class="h3 m-5 col-3 bg-info text-black text-center">
-  管理情報一覧画面
+<div class="m-2 h3 border-bottom">
+  <div class="text-center">登録情報一覧</div>
 </div>
 
-<div class="py-4">
-    <div class="container">
-        <div class="row">
+
+        <div class="row mt-5">
             <div class="col-md-4">   
                 <%= link_to cows_path(current_user) do %>
                     <div class="btn btn-sm btn-secondary rounded-pill">登録した牛一覧</div>
@@ -30,9 +29,8 @@
                 <% end %>                
             </div>                                     
         </div>
-    </div>
     <section id="menu">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs mt-5">
                     <li class="nav-item"><a href="#content1" class="nav-link active" data-toggle="tab">乳用牛・肥育牛</a></li>
                     <li class="nav-item"><a href="#content2" class="nav-link" data-toggle="tab">豚</a></li>
                     <li class="nav-item"><a href="#content3" class="nav-link" data-toggle="tab">鶏卵・肉用鶏</a></li>
@@ -108,6 +106,4 @@
                 </div>                
             </div>
             
-        </div>
     </section>
-</div>

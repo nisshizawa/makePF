@@ -45,4 +45,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です。
+- O-DAN  https://o-dan.net/ja/
+- イラストAC  https://www.ac-illust.com/

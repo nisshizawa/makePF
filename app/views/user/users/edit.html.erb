@@ -1,8 +1,8 @@
-<div class="h3 m-5 col-3 bg-info text-black text-center">
-  会員情報編集
+<div class="m-2 h3 border-bottom">
+  <div class="text-center">会員登録情報編集</div>
 </div>
 
-<div class="container">
+
   <%= form_with model: @user, url: update_path, method: :patch do |f| %>
     <div class="my-3 row justify-content-start">
       <div class="col-2">氏名</div>
@@ -65,4 +65,3 @@
     </div>
   </div>  
   <% end %>  
-</div>

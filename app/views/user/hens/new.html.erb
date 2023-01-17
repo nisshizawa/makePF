@@ -1,40 +1,36 @@
-<div class="py-4">
-    <section id="infomation">
-        <div class="container">
-            <h3 class="md-3">鶏の新規登録</h3>
-            <%= form_with model: @hen, url: hens_path do |f| %> 
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>動物画像</h4>
-                    <%= f.file_field :image, accept: "image/*" %>
-                </div>
-                <div class="col-md-6">
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">品種名</div>
-                        <div class="col-6 border-start border-dark"><%= f.text_field :animal_name %></div>
-                    </div>
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">個体数</div>
-                        <div class="col-6 border-start border-dark"><%= f.text_field :amount %></div>
-                    </div>
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">入荷・生誕日</div>
-                        <div class="col-6 border-start border-dark"><%= f.text_field :arrival %></div>
-                    </div>
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">ワクチン接種</div>
-                        <div class="col-6 border-start border-dark"><%= f.text_field :vaccine %></div>
-                    </div>                   
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">自由記述欄</div>
-                        <div class="col-6 border-start border-dark"><%= f.text_area :comment %></div>
-                    </div>                                       
-                </div>
-            <div class="text-center">   
-                <button type="submit" class="btn btn-info">登録する</button>
-            </div>                     
-            </div>
-            <% end %>
-        </div>        
-    </section>
+<div class="m-2 h3 border-bottom">
+  <div class="text-center">鶏の新規登録</div>
 </div>
+<%= form_with model: @hen, url: hens_path do |f| %> 
+<div class="row mt-5">
+    <div class="col-md-6">
+        <h4>動物画像</h4>
+        <%= f.file_field :image, accept: "image/*" %>
+    </div>
+    <div class="col-md-6">
+        <div class="row justify-content-start">
+            <div class="col-3 border borderless bg-light">品種名</div>
+            <div class="col-6 border-start border-dark"><%= f.text_field :animal_name %></div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-3 border borderless bg-light">個体数</div>
+            <div class="col-6 border-start border-dark"><%= f.text_field :amount %></div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-3 border borderless bg-light">入荷・生誕日</div>
+            <div class="col-6 border-start border-dark"><%= f.text_field :arrival %></div>
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-3 border borderless bg-light">ワクチン接種</div>
+            <div class="col-6 border-start border-dark"><%= f.text_field :vaccine %></div>
+        </div>                   
+        <div class="row justify-content-start">
+            <div class="col-3 border borderless bg-light">自由記述欄</div>
+            <div class="col-6 border-start border-dark"><%= f.text_area :comment %></div>
+        </div>                                       
+    </div>
+    <div class="col-md-6 m-4 text-center">   
+        <button type="submit" class="btn btn-info">登録する</button>
+    </div>                     
+</div>
+<% end %>

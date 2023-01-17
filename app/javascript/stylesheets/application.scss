@@ -6,7 +6,14 @@
      background-image: url("../images/69d6ba9a68e799f1329c39619ef82311_t.jpg");
      background-repeat: space;
      height: auto;
-     width: 1200px;
+     width: auto;
+}
+
+.image {
+    background-image: url("../images/nav.jpg");
+    width: auto;
+    height: auto;
+    background-size: cover;
 }
 
 #post_raty img {

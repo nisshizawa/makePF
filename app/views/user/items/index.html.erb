@@ -1,45 +1,48 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="border">
-                <div class="border-bottom">
-                    ジャンル検索
+<div class="row">
+    <div class="col-md-2">
+        <div class="border">
+            <div class="border-bottom text-center">
+                ジャンル検索
+            </div>
+            <% @genres.each do |genre| %>
+                <div class="text-center">
+                    <%= link_to genre.name, items_path(genre_id: genre.id)%>
                 </div>
-                <% @genres.each do |genre| %>
-                    <div class="text-center">
-                        <%= link_to genre.name, items_path(genre_id: genre.id)%>
+            <% end %>
+            <div class="border-top text-center">
+                <%= link_to '絞り込み機能', search_path%>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <div class="col-md-10">
+        <div class="m-2 h3 border-bottom">
+          <div class="text-center">商品一覧</div>
+        </div>        
+            <div class="card-list-container py-5">
+                <% @items.each do |item| %>
+                <div class="card w-50 mx-auto mt-4 shadow-lg">
+                <% if item.is_active %>
+            
+                      
+                            <%= image_tag item.get_image, class:"card-img-top"; %>
+                      
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="card-title"><%= link_to item.name, item_path(item.id) %></h4>    
+                            <h4 class="card-text">￥<%= item.with_tax_price.to_s(:delimited) %></h4>
+                            <h5 class="card-text">コメント数<%= item.item_comments.count %></h5>
+                        </div>    
                     </div>
+                  
+                    <% end %>
+                    
+                </div>
                 <% end %>
             </div>
-            
-
-        </div>
-
-        <div class="col-md-10">
-            <h3>商品一覧</h3>
-                <div class="card-list-container py-5">
-                    <% @items.each do |item| %>
-                    <div class="card w-50 mx-auto mt-4 shadow-lg">
-                    <% if item.is_active %>
-                
-                          
-                                <%= image_tag item.get_image, class:"card-img-top"; %>
-                          
-                        <div class="card-body">
-                            <div class="row">
-                                <h4 class="card-title"><%= link_to item.name, item_path(item.id) %></h4>    
-                                <h6 class="card-text">￥<%= item.with_tax_price.to_s(:delimited) %></h6>
-                                <h5 class="card-text">コメント数<%= item.item_comments.count %></h5>
-                            </div>    
-                        </div>
-                      
-                        <% end %>
-                        
-                    </div>
-                    <% end %>
-                </div>
-        </div>
-    </div>    
-    <%#= paginate @items %>
+    </div>
+</div>    
     
-</div>
+

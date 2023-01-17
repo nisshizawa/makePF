@@ -34,11 +34,12 @@ Rails.application.routes.draw do
          post 'users/guest_sign_in', to: 'sessions#new_guest'
       end  
       root to: 'homes#top'
-      get 'homes/search' => 'homes#search', as: 'search'
+
       get 'homes/about' => 'homes#about', as: 'about'
       resources :cows
       resources :pigs
       resources :hens
+      get 'items/search' => 'items#search', as: 'search'      
       resources :items, only: [:index, :show] do
         resources :item_comments, only: [:create, :index, :destroy]
       end  

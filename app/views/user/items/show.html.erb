@@ -1,43 +1,69 @@
-<div class="py-4">
-    <section id="infomation">
-        <div class="container">
-            <h3 class="md-3">商品の登録情報</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <h4>商品の画像</h4>
-                        <div class="card-list-container py-5">
-                            <div class="w-200 mx-2 mt-4 shadow-lg">
-                                <%= image_tag @item.get_image, class:"card-img-top"; %>
-                            </div>   
-                        </div>    
-                </div>
-                <div class="col-md-8">
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">商品名</div>
-                        <div class="col-6 border border-dark"><%= @item.name %></div>
-                    </div>
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">商品説明</div>
-                        <div class="col-6 border border-dark"><%= @item.introduction %></div>
-                    </div>
-                    <div class="row justify-content-start">
-                        <div class="col-3 border borderless bg-light">値段</div>
-                        <div class="col-6 border border-dark">￥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</div>
-                    </div>
-                    <%= form_with model: Simulation.new do |f| %>
-                        <div class="row justify-content-start">
-                            <div class="col-3 border-start bg-light">
-                                <%= f.hidden_field :item_id, :value => @item.id %>
-                                <%= f.select :amount, *[1..10] %>                                
-                            </div>
-                            <div class="col-6 border-start border-dark"><%= f.submit "シミュレーションに加える", class: "btn btn-success" %></div>
-                        </div> 
-                    <% end %>    
-                </div>
+
+<div class="container">
+    <div class="m-2 h3 border-bottom">
+      <div class="text-center">商品の登録情報</div>
+    </div>            
+    <div class="row">
+        <div class="col-md-5">
+            <h4>商品の画像</h4>
+                <div class="card-list-container py-5">
+                    <div class="w-200 mx-2 shadow-lg">
+                        <%= image_tag @item.get_image, class:"card-img-top"; %>
+                    </div>   
+                </div>    
+        </div>
+        <div class="col-md-7 mt-5">
+            <div class="row justify-content-start">
+                <div class="col-3 border borderless bg-light">商品名</div>
+                <div class="col-6 border border-dark"><%= @item.name %></div>
             </div>
-        </div>        
-    </section>
-</div>
+            <div class="row justify-content-start">
+                <div class="col-3 border borderless bg-light">商品説明</div>
+                <div class="col-6 border border-dark"><%= @item.introduction %></div>
+            </div>
+            <div class="row justify-content-start">
+                <div class="col-3 border borderless bg-light">値段</div>
+                <div class="col-6 border border-dark">￥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</div>
+            </div>
+            <%= form_with model: Simulation.new do |f| %>
+                <div class="row justify-content-start">
+                    <div class="col-3 border-start bg-light">
+                        <%= f.hidden_field :item_id, :value => @item.id %>
+                        <%= f.select :amount, *[1..10] %>                                
+                    </div>
+                    <div class="col-6 border-start border-dark"><%= f.submit "シミュレーションに加える", class: "btn btn-success" %></div>
+                </div> 
+            <% end %> 
+            <div class="mt-5">  
+               平均評価:
+                <% if @item.item_comments.count !=0 %>
+                    <%= (@item.item_comments.sum {|comment| comment.rate } / @item.item_comments.count).round(1)  %>
+                <% else %>
+                    まだ評価されていません
+                <% end %>
+                
+                <%= form_with model: [@item, @item_comment] do |f| %>
+                     <div id="post_raty">
+                       <label>評価：</label>
+                 
+                    </div>
+                    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                    <%= f.submit "送信する" %>
+                <% end %>
+                      <script>
+                    var elem = document.getElementById('post_raty');
+                    var opt = {  
+                        starOn: "<%= asset_path('star.jpg') %>",
+                        starOff: "<%= asset_path('star_off.jpg') %>",
+                        starHalf: "<%= asset_path('star_harf.jpg') %>",
+                      };
+                      raty(elem,opt);
+                    </script>
+            </div>            
+        </div>
+    </div>
+</div>        
+
 
 <div class="container">
     <div class="row">
@@ -65,34 +91,5 @@
                 <% end %>
             </tbody>
         </table>
-        <div>  
-
-        
-            
-           平均評価:
-            <% if @item.item_comments.count !=0 %>
-                <%= (@item.item_comments.sum {|comment| comment.rate } / @item.item_comments.count).round(1)  %>
-            <% else %>
-                まだ評価されていません
-            <% end %>
-            
-            <%= form_with model: [@item, @item_comment] do |f| %>
-                 <div id="post_raty">
-                   <label>評価：</label>
-             
-                </div>
-                <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-                <%= f.submit "送信する" %>
-            <% end %>
-                  <script>
-                var elem = document.getElementById('post_raty');
-                var opt = {  
-                    starOn: "<%= asset_path('star.jpg') %>",
-                    starOff: "<%= asset_path('star_off.jpg') %>",
-                    starHalf: "<%= asset_path('star_harf.jpg') %>",
-                  };
-                  raty(elem,opt);
-                </script>
-        </div>
     </div>
 </div>

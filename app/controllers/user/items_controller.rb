@@ -1,5 +1,13 @@
 class User::ItemsController < ApplicationController
-
+      def search
+        @genres = Genre.all        
+        if params[:genre_id].present?
+          @items = Item.where(genre_id: params[:genre_id])
+        else
+          @items = Item.all
+        end  
+      end
+  
     def index
         @genres = Genre.all
         if params[:genre_id]

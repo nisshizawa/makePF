@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="row">
-        <div class="h3 col-md-4 bg-info text-black text-center">
-            新規就農シュミレーション
+
+        <div class="m-2 h3 border-bottom">
+          <div class="text-center">新規就農シュミレーション</div>
         </div>
         <div class="m-5 col-md-5 offset-md-2">
             <%= button_to "全てリセット",  destroy_all_path, method: :delete %>
         </div>
-    </div>
+
     <table class="table table-bordered">
         <thead class="table-light">
             <tr>
@@ -55,16 +55,5 @@
                     </span>
                 </div>
     </div>
-    <!--<div class="mt-5 row">-->
-    <!--    <div class="text-center">-->
-            
-    <!--        <#% if @simulations.empty? %>-->
-    <!--            <input class="btn btn-success" type="submit" value="情報入力に進む"disabled>-->
-    <!--        <#% else %>-->
-    <!--            <#%= link_to new_order_path(@customer) do %>-->
-    <!--                <input class="btn btn-success" type="submit" value="情報入力に進む">-->
-    <!--            <#% end %>-->
-    <!--        <#% end %>    -->
-    <!--    </div>-->
-    <!--</div>-->
+
 </div>    

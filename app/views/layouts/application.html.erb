@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
     <title>LiveStock</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,9 +13,10 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-right bg-warning">
-        <div class="container">
-          <%= link_to search_path do %>
+    <div class="image">  
+      <nav class="navbar navbar-expand-lg navbar-right">
+              <div class="container">
+          <%= link_to user_homes_top_path do %>
             <h1>ANImaコミュニティ</h1>
           <% end %>  
           <div class="navbar-collapse collspace show" id="navbarNavDropdown" style>
@@ -30,12 +32,6 @@
                     <button type="button" class="btn btn-outline-info">会員一覧</button>
                   <% end %>
                 </li>
-                <!--<li>-->
-                <!--  <#%= link_to admin_item_item_comments_path do %>-->
-                <!--    <button type="button" class="btn btn-outline-info">商品コメント一覧</button>-->
-                <!--  <#% end %>-->
-                <!--</li>-->
-                <!--<li>-->
                   <%= link_to admin_genres_path do %>
                     <button type="button" class="btn btn-outline-info">ジャンル一覧</button>
                   <% end %>
@@ -99,13 +95,24 @@
           </div>
         </div>
       </nav>
+    </div>     
     </header>
-    <div class="main">
+    <h4 id="notice">
+      <div class="border bg-success text-light">
+        <%= flash[:notice] %>
+      </div>  
+    </h4>    
+    <div class="main"> 
+      <div class="py-4 ">  
 
-    <%= yield %>
-    </div>
-      <footer class ="py-4 bg-dark text-light">
-      <div class="container text-center">Copyright ©2023 ANIma community.Inc.</p>
-    </footer>    
+        <div class="container botder bg-light">
+          <%= yield %>
+        </div>  
+      </div>    
+    </div> 
+    <footer class ="py-4 bg-dark text-light">
+      <div class="container text-center">Copyright ©2023 ANIma community.Inc.</div>
+    </footer> 
+     
   </body>
 </html>

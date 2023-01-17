@@ -30,7 +30,7 @@
         </div>        
             <div class="card-list-container py-5">
                 <% @items.each do |item| %>
-                <div class="card w-50 mx-auto mt-4 shadow-lg">
+                <div class="card w-50 h-50 mt-4 shadow-lg">
                 <% if item.is_active %>
             
                       
@@ -50,11 +50,4 @@
                 <% end %>
             </div>
     </div>
-    <%= paginate @items %>
 </div>    
-
-
-
-
-
-

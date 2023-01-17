@@ -1,47 +1,48 @@
-<div class="py-4">
-    <section id="infomation">
-        <div class="container">
-            <h3 class="md-6">鶏の一覧表</h3>
-            <div class="row">
-                <div class="col-md-10">
-                    <table class="table table-hover">
-                        <thead class="table-light">
-                            <tr>
-                                <th></th>
-                                <th>品種名</th>
-                                <th>個体数</th>
-                                <th>入荷・生誕日</th>
-                                <th colspan="3"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <% @hens.each do |hen| %>
-                            <tr>
-                                <td></td>
-                                <td><%= hen.animal_name %></td>
-                                <td><%= hen.amount %></td>
-                                <td><%= hen.arrival %></td>
-                                <td>
-                                    <%= link_to hen_path(hen.id) do %>
-                                        <div class="btn btn-sm btn-info">詳細へ</div>
-                                    <% end %>                      
-                                </td>
-                                <td>
-                                    <%= link_to edit_hen_path(hen.id) do %>
-                                        <div class="btn btn-sm btn-success">編集する</div>
-                                    <% end %>    
-                                </td>
-                                <td>
-                                    <%= link_to hen_path(hen.id), method: :delete do %>
-                                        <div data-confirm="本当に消しますか？" class="btn btn-sm btn-danger">削除する</div>
-                                    <% end %>
-                                </td>
-                            </tr>
+<div class="m-2 h3 border-bottom">
+  <div class="text-center">鶏の一覧表</div>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        <table class="table table-hover mt-5">
+            <thead class="table-light">
+                <tr>
+                    <th></th>
+                    <th>品種名</th>
+                    <th>個体数</th>
+                    <th>入荷・生誕日</th>
+                    <th colspan="2"></th>
+                    <th>
+                        <%= link_to new_hen_path(current_user) do %>
+                            <div class="btn btn-sm btn-info rounded-pill">鶏の新規登録</div>
+                        <% end %>  
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @hens.each do |hen| %>
+                <tr>
+                    <td></td>
+                    <td><%= hen.animal_name %></td>
+                    <td><%= hen.amount %></td>
+                    <td><%= hen.arrival %></td>
+                    <td>
+                        <%= link_to hen_path(hen.id) do %>
+                            <div class="btn btn-sm btn-info">詳細へ</div>
+                        <% end %>                      
+                    </td>
+                    <td>
+                        <%= link_to edit_hen_path(hen.id) do %>
+                            <div class="btn btn-sm btn-success">編集する</div>
                         <% end %>    
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>        
-    </section>
+                    </td>
+                    <td>
+                        <%= link_to hen_path(hen.id), method: :delete do %>
+                            <div data-confirm="本当に消しますか？" class="btn btn-sm btn-danger">削除する</div>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>    
+            </tbody>
+        </table>
+    </div>
 </div>

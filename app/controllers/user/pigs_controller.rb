@@ -15,8 +15,8 @@ class User::PigsController < ApplicationController
     @pig = Pig.new(pig_params)
     @pig.user_id = current_user.id
     if @pig.save
-      flash[:notice] ='You have created pig successfully.'
-      redirect_to cow_path(@pig.id)
+      flash[:notice] ='豚の情報を登録しました！'
+      redirect_to pig_path(@pig.id)
     else
       @pig = Pig.all
       render :index
@@ -38,7 +38,7 @@ class User::PigsController < ApplicationController
   def update
     @pig = Pig.find(params[:id])
     if @pig.update(pig_params)
-      flash[:notice] ='You have update pig successfully.'
+      flash[:notice] ='豚の情報を更新しました！'
       redirect_to pig_path(@pig.id)
     else
       render :edit
@@ -48,7 +48,7 @@ class User::PigsController < ApplicationController
   def destroy
     @pig = Pig.find(params[:id])
     @pig.destroy
-    redirect_to pig_path    
+    redirect_to pigs_path    
   end
   
   private

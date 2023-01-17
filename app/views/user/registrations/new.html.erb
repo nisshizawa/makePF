@@ -61,4 +61,8 @@
 
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="row">
+  <%= link_to new_user_session_path do %>
+    <button type="button" class="btn btn-outline-success">会員登録済みの方はこちらへ</button>
+  <% end %>
+</div>

@@ -15,7 +15,7 @@ class User::CowsController < ApplicationController
     @cow = Cow.new(cow_params)
     @cow.user_id = current_user.id
     if @cow.save
-      flash[:notice] ='You have created cow successfully.'
+      flash[:notice] ='牛の情報を登録しました！'
       redirect_to cow_path(@cow.id)
     else
       @cows = Cow.all
@@ -38,7 +38,7 @@ class User::CowsController < ApplicationController
   def update
     @cow = Cow.find(params[:id])
     if @cow.update(cow_params)
-      flash[:notice] ='You have update cow successfully.'
+      flash[:notice] ='牛の情報を更新しました！'
       redirect_to cow_path(@cow.id)
     else
       render :edit
