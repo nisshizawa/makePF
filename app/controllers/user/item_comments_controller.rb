@@ -30,7 +30,6 @@ class User::ItemCommentsController < ApplicationController
     private
     
     def item_comment_params
-
         params.require(:item_comment).permit(:comment).merge({rate: params[:score]})
     end
 end

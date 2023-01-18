@@ -1,4 +1,6 @@
 class User::CowsController < ApplicationController
+   before_action :authenticate_user! 
+   
    before_action :guest_check
    
   def guest_check

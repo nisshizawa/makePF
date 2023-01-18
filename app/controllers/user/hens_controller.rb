@@ -1,5 +1,7 @@
 class User::HensController < ApplicationController
-   before_action :guest_check
+  before_action :authenticate_user!  
+  
+  before_action :guest_check
    
   def guest_check
       if current_user.email=='guest@example.com'
