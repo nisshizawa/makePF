@@ -2,7 +2,7 @@ class User::PigsController < ApplicationController
    before_action :guest_check
    
   def guest_check
-      if current_user == User.find(5)
+      if current_user.email=='guest@example.com'
         redirect_to user_homes_top_path,notice: "このページを見るには会員登録が必要です。"
       end
   end        
