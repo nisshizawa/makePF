@@ -2,9 +2,9 @@ class User::ItemsController < ApplicationController
       def search
         @genres = Genre.all        
         if params[:genre_id].present?
-          @items = Item.where(genre_id: params[:genre_id])
+          @items = Item.where(genre_id: params[:genre_id]).page(params[:page]).per(5)
         else
-          @items = Item.all
+          @items = Item.page(params[:page]).per(5)
         end  
       end
   
@@ -16,7 +16,7 @@ class User::ItemsController < ApplicationController
         else
             all_items = Item.all
         end
-        @items = all_items
+        @items = all_items.page(params[:page]).per(5)
     end
     
     def show
