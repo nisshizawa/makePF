@@ -16,7 +16,7 @@ class User::ItemCommentsController < ApplicationController
        if  comment.save
         redirect_to item_path(item)
        else
-      redirect_to item_path(item), alert: "hogehoge error"
+      redirect_to item_path(item)
        end
         
     end

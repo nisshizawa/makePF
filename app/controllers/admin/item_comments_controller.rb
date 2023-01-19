@@ -6,14 +6,14 @@ class Admin::ItemCommentsController < ApplicationController
        if  comment.save
         redirect_to item_path(item)
        else
-      redirect_to item_path(item), alert: "hogehoge error"
+      redirect_to item_path(item)
        end
         
     end
     
     def destroy
         ItemComment.find(params[:id]).destroy
-        redirect_to item_path(params[:item_id])
+        redirect_to admin_item_path(params[:item_id])
     end
     
     
