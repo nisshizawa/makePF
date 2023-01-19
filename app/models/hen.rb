@@ -6,7 +6,7 @@ class Hen < ApplicationRecord
   
   def get_image(*size)
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/no.image.gpg')
+      file_path = Rails.root.join('app/assets/images/no.image.jpg')
       image.attach(io: File.open(file_path), filename: 'no.image.jpg', content_type: 'image/jpg')
     end
     
